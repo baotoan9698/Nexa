@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LangBiang & Bù Gia Mập</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="experience" aria-label="Chọn điểm đến trekking">
+      <div class="grain" aria-hidden="true"></div>
+      <div class="intro-overlay" aria-hidden="true">
+        <p class="intro-line" aria-label="Next Adventure. Content demo.">
+          <span class="intro-brand-word" style="--i: 0">Next</span>
+          <span class="intro-brand-word" style="--i: 1">Adventure</span>
+          <small style="--i: 2">Mỗi cung đường là một câu chuyện mới.</small>
+        </p>
+      </div>
+
+      <nav class="topbar" aria-label="Điều hướng">
+        <span class="brand" aria-label="Next Adventure">Next Adventure</span>
+      </nav>
+
+      <section class="chooser" aria-label="LangBiang hoặc Bù Gia Mập">
+        <button class="destination destination--left" type="button" data-tour="langbiang" data-place="LangBiang" aria-pressed="false">
+          <img src="assets/ta-nang.png" alt="Núi và cung trekking LangBiang">
+          <span class="destination-shade" aria-hidden="true"></span>
+          <span class="destination-title">LangBiang</span>
+          
+        </button>
+
+        <button class="destination destination--right" type="button" data-tour="bu-gia-map" data-place="Bù Gia Mập" aria-pressed="false">
+          <img src="assets/bu-gia-map.png" alt="Rừng và thác nước Bù Gia Mập">
+          <span class="destination-shade" aria-hidden="true"></span>
+          <span class="destination-title">Bù Gia Mập</span>
+         
+        </button>
+      </section>
+
+      <section class="tour-detail" aria-live="polite" aria-hidden="true">
+        <img class="tour-image" src="assets/ta-nang.png" alt="">
+        <div class="tour-vignette" aria-hidden="true"></div>
+
+        <button class="back-button" type="button" aria-label="Quay lại chọn tour" title="Quay lại">
+          <span aria-hidden="true">←</span>
+        </button>
+
+        <div class="tour-hero-title">
+          <h1 class="tour-title">LangBiang</h1>
+        </div>
+
+        <article class="tour-copy">
+          <p class="tour-meta">2 days / 1 night · Moderate · Best for sunrise lovers</p>
+          <p class="tour-description">
+            Follow a wild ridge trail through rolling grass hills, pine valleys, and open skies.
+          </p>
+
+          <div class="tour-info-grid" aria-label="Thông tin tour">
+            <div>
+              <span>Duration</span>
+              <strong class="tour-duration">2D1N</strong>
+            </div>
+            <div>
+              <span>Level</span>
+              <strong class="tour-level">Moderate</strong>
+            </div>
+            <div>
+              <span>Group</span>
+              <strong class="tour-group">8-14 guests</strong>
+            </div>
+          </div>
+
+          <div class="tour-section">
+            <h2>Highlights</h2>
+            <ul class="tour-highlights"></ul>
+          </div>
+
+          <button class="cta-button" type="button">Start This Journey</button>
+        </article>
+
+        <div class="tour-next">
+          <h2>What's next?</h2>
+          <div class="tour-thumbs">
+            <button class="tour-thumb" type="button" data-tour-thumb="langbiang" aria-label="Xem tour LangBiang">
+              <img src="assets/ta-nang.png" alt="">
+              <span>LangBiang</span>
+            </button>
+            <button class="tour-thumb" type="button" data-tour-thumb="bu-gia-map" aria-label="Xem tour Bù Gia Mập">
+              <img src="assets/bu-gia-map.png" alt="">
+              <span>Bù Gia Mập</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <p class="selection" aria-live="polite"></p>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
