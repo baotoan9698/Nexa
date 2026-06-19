@@ -76,7 +76,7 @@ a {
   overflow: hidden;
   background:
     linear-gradient(rgb(0 0 0 / var(--intro-darkness)), rgb(0 0 0 / var(--intro-darkness))),
-    url("assets/bg.webp") center / cover no-repeat,
+    url("assets/bg.jpeg") center / cover no-repeat,
     #000;
   pointer-events: none;
   animation: intro-out 800ms ease 2.55s both;
@@ -789,7 +789,7 @@ a {
   .topbar {
     top: max(10px, env(safe-area-inset-top));
     left: 50%;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) 116px;
     width: calc(100vw - 20px);
     min-height: 54px;
     gap: 4px;
@@ -805,36 +805,52 @@ a {
   .nav-main {
     min-height: 54px;
     grid-template-columns: auto minmax(0, 1fr);
-    padding: 0 14px;
+    gap: 10px;
+    padding: 0 12px;
   }
 
   .menu-wrap {
     min-height: 54px;
-    grid-template-columns: auto;
-    padding: 0 10px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 6px;
+    align-items: center;
+    padding: 0 8px 0 18px;
+  }
+
+  .menu-label {
+    justify-self: center;
+    font-size: 8px;
+    line-height: 1;
   }
 
   .brand {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .nav-links {
-    gap: 14px;
+    gap: 8px;
     justify-content: center;
     overflow: hidden;
   }
 
   .nav-links a {
+    padding: 10px 6px;
     font-size: 9px;
   }
 
+  .desktop-only {
+    display: none;
+  }
+
   .menu-toggle {
-    width: 42px;
+    width: 34px;
     height: 34px;
+    justify-self: end;
   }
 
   .dropdown-menu {
     min-width: 160px;
+    right: 0;
   }
 
   .dropdown-menu a {
@@ -916,34 +932,35 @@ a {
     right: 16px;
     bottom: 14px;
     left: 16px;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px 12px;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 8px;
+    align-items: center;
   }
 
   .site-footer p {
-    font-size: 9px;
+    font-size: 8px;
     letter-spacing: 0.04em;
-    white-space: normal;
+    white-space: nowrap;
   }
 
   .footer-thread {
-    bottom: 42px;
+    bottom: 28px;
   }
 
   .footer-center {
-    grid-column: 1 / -1;
+    grid-column: 2;
     grid-row: 1;
     max-width: 100%;
   }
 
   .footer-left {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 1;
   }
 
   .footer-right {
-    grid-column: 2;
-    grid-row: 2;
+    grid-column: 3;
+    grid-row: 1;
   }
 
   .tour-detail {
@@ -1033,17 +1050,41 @@ a {
 }
 
 @media (max-width: 380px) {
-  .nav-links {
-    display: none;
+  .nav-links a {
+    font-size: 8px;
+    padding-inline: 4px;
   }
 
   .topbar {
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) 108px;
     transform: translateX(-50%);
   }
 
+  .menu-wrap {
+    padding-left: 14px;
+  }
+
+  .menu-label {
+    font-size: 7px;
+  }
+
+  .site-footer {
+    gap: 6px;
+  }
+
+  .site-footer p {
+    font-size: 7px;
+    letter-spacing: 0.03em;
+  }
+
   .nav-main {
-    grid-template-columns: auto;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 6px;
+    padding-inline: 8px;
+  }
+
+  .brand {
+    font-size: 17px;
   }
 
   .destination {
