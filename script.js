@@ -5,6 +5,8 @@ const detail = document.querySelector(".tour-detail");
 const backButton = document.querySelector(".back-button");
 const tourThumbs = Array.from(document.querySelectorAll(".tour-thumb"));
 const selection = document.querySelector(".selection");
+const menuWrap = document.querySelector(".menu-wrap");
+const menuToggle = document.querySelector(".menu-toggle");
 
 const tourContent = {
   langbiang: {
@@ -116,7 +118,24 @@ tourThumbs.forEach((thumb) => {
 
 backButton.addEventListener("click", closeTour);
 
+menuToggle.addEventListener("click", () => {
+  const isOpen = menuWrap.classList.toggle("is-open");
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+});
+
+document.addEventListener("click", (event) => {
+  if (!menuWrap.contains(event.target)) {
+    menuWrap.classList.remove("is-open");
+    menuToggle.setAttribute("aria-expanded", "false");
+  }
+});
+
 document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    menuWrap.classList.remove("is-open");
+    menuToggle.setAttribute("aria-expanded", "false");
+  }
+
   if (event.key === "Escape") {
     closeTour();
   }
