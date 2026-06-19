@@ -76,7 +76,7 @@ a {
   overflow: hidden;
   background:
     linear-gradient(rgb(0 0 0 / var(--intro-darkness)), rgb(0 0 0 / var(--intro-darkness))),
-    url("assets/bg.jpeg") center / cover no-repeat,
+    url("assets/bg.webp") center / cover no-repeat,
     #000;
   pointer-events: none;
   animation: intro-out 800ms ease 2.55s both;
