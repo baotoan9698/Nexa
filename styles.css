@@ -72,12 +72,27 @@ a {
   z-index: 40;
   display: grid;
   place-items: center;
-  background: #000;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.66)),
+    radial-gradient(circle at center, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.58) 72%),
+    url("assets/bg.jpg") center / cover no-repeat,
+    #000;
   pointer-events: none;
   animation: intro-out 800ms ease 2.55s both;
 }
 
+.intro-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.18);
+  pointer-events: none;
+}
+
 .intro-line {
+  position: relative;
+  z-index: 1;
   display: flex;
   max-width: min(92vw, 980px);
   flex-wrap: wrap;
