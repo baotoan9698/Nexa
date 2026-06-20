@@ -7,6 +7,9 @@ const tourThumbs = Array.from(document.querySelectorAll(".tour-thumb"));
 const selection = document.querySelector(".selection");
 const menuWrap = document.querySelector(".menu-wrap");
 const menuToggle = document.querySelector(".menu-toggle");
+const journeyButton = document.querySelector(".cta-button");
+const routeDropdown = document.querySelector(".route-dropdown");
+const routeToggle = document.querySelector(".route-toggle");
 
 const tourContent = {
   langbiang: {
@@ -118,9 +121,24 @@ tourThumbs.forEach((thumb) => {
 
 backButton.addEventListener("click", closeTour);
 
+journeyButton.addEventListener("click", () => {
+  const activeTour = detail.dataset.activeTour;
+
+  if (activeTour === "langbiang") {
+    window.location.href = "cung-duong/lang-biang/index.html";
+  } else if (activeTour === "bu-gia-map") {
+    window.location.href = "cung-duong/bu-gia-map/index.html";
+  }
+});
+
 menuToggle.addEventListener("click", () => {
   const isOpen = menuWrap.classList.toggle("is-open");
   menuToggle.setAttribute("aria-expanded", String(isOpen));
+});
+
+routeToggle.addEventListener("click", () => {
+  const isOpen = routeDropdown.classList.toggle("is-open");
+  routeToggle.setAttribute("aria-expanded", String(isOpen));
 });
 
 document.addEventListener("click", (event) => {
@@ -128,12 +146,19 @@ document.addEventListener("click", (event) => {
     menuWrap.classList.remove("is-open");
     menuToggle.setAttribute("aria-expanded", "false");
   }
+
+  if (!routeDropdown.contains(event.target)) {
+    routeDropdown.classList.remove("is-open");
+    routeToggle.setAttribute("aria-expanded", "false");
+  }
 });
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     menuWrap.classList.remove("is-open");
     menuToggle.setAttribute("aria-expanded", "false");
+    routeDropdown.classList.remove("is-open");
+    routeToggle.setAttribute("aria-expanded", "false");
   }
 
   if (event.key === "Escape") {

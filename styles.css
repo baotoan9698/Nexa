@@ -1,11 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Playfair+Display:wght@700;800;900&display=swap");
 
 :root {
-  --normal-font: "svn", "SVN", "SVN-Gilroy", "SVN Gilroy", Arial, sans-serif;
-  --content-font: "Roslindaledisplaycondensed", "Roslindale Display Condensed", "RoslindaleDisplayCondensed", "Bodoni 72", Didot, "Playfair Display", Georgia, serif;
+  --normal-font: svn, "SVN", "SVN-Gilroy", "SVN Gilroy", sans-serif;
+  --content-font: svn, "SVN", "SVN-Gilroy", "SVN Gilroy", sans-serif;
   --display-font: var(--content-font);
   --poster-font: var(--content-font);
-  --fairytale-font: "Cinzel Decorative", "Bodoni 72", Didot, Georgia, serif;
+  --fairytale-font: var(--content-font);
+  --old-logo-font: "Cinzel Decorative", "Bodoni 72", Didot, Georgia, serif;
+  --old-intro-font: "Roslindaledisplaycondensed", "Roslindale Display Condensed", "RoslindaleDisplayCondensed", "Bodoni 72", Didot, "Playfair Display", Georgia, serif;
+  --text-color: rgb(53, 53, 53);
+  --menu-font-size: 17px;
+  --menu-line-height: 20px;
+  --body-font-size: 16px;
+  --body-line-height: 22px;
+  --heading-font-size: 32px;
+  --heading-line-height: 45px;
 }
 
 :root {
@@ -76,7 +85,7 @@ a {
   overflow: hidden;
   background:
     linear-gradient(rgb(0 0 0 / var(--intro-darkness)), rgb(0 0 0 / var(--intro-darkness))),
-    url("assets/bg.webp") center / cover no-repeat,
+    url("assets/bg.jpeg") center / cover no-repeat,
     #000;
   pointer-events: none;
   animation: intro-out 800ms ease 2.55s both;
@@ -103,9 +112,9 @@ a {
   padding: 0 22px;
   color: var(--fg);
   font-family: var(--content-font);
-  font-size: clamp(28px, 5.8vw, 74px);
+  font-size: clamp(26px, 4.8vw, 60px);
   font-weight: 900;
-  line-height: 0.96;
+  line-height: 1.08;
   text-align: center;
   text-transform: uppercase;
   text-shadow:
@@ -230,6 +239,7 @@ a {
 }
 
 .nav-links a,
+.route-toggle,
 .dropdown-menu a {
   color: #171717;
   font-family: var(--display-font);
@@ -241,16 +251,119 @@ a {
   transition: background 160ms ease, color 160ms ease;
 }
 
-.nav-links a {
+.nav-links a,
+.route-toggle {
   padding: 13px 14px;
   border-radius: 7px;
 }
 
 .nav-links a:hover,
-.nav-links a:focus-visible {
+.nav-links a:focus-visible,
+.route-dropdown:hover .route-toggle,
+.route-dropdown.is-open .route-toggle,
+.route-toggle:focus-visible {
   background: rgba(0, 0, 0, 0.08);
   color: #000;
   outline: none;
+}
+
+.route-dropdown {
+  position: relative;
+}
+
+.route-toggle {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.route-options {
+  position: absolute;
+  top: calc(100% + 13px);
+  left: 0;
+  z-index: 6;
+  display: grid;
+  min-width: 320px;
+  padding: 0;
+  border: 0;
+  border-radius: 0 0 8px 8px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.16);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.route-options::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  left: 0;
+  height: 10px;
+}
+
+.route-dropdown:hover .route-options,
+.route-dropdown:focus-within .route-options,
+.route-dropdown.is-open .route-options {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.route-options a {
+  padding: 16px 28px;
+  border-radius: 0;
+  color: #111;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: left;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.route-options a:hover,
+.route-options a:focus-visible {
+  background: rgba(0, 0, 0, 0.06);
+  color: #1daee4;
+  outline: none;
+}
+
+.route-toggle {
+  position: relative;
+}
+
+.route-toggle::after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  bottom: -14px;
+  left: 12px;
+  height: 2px;
+  background: #1daee4;
+  opacity: 0;
+  transform: scaleX(0.65);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.route-dropdown:hover .route-toggle::after,
+.route-dropdown.is-open .route-toggle::after,
+.route-dropdown:focus-within .route-toggle::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.route-toggle::before {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 7px;
+  border-top: 5px solid currentColor;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  vertical-align: 0.12em;
+  transform: translateX(100%);
 }
 
 .menu-toggle {
@@ -386,13 +499,13 @@ a {
 .destination-title {
   top: 47%;
   font-family: var(--display-font);
-  font-size: clamp(30px, 4.4vw, 52px);
+  font-size: clamp(27px, 3.7vw, 44px);
   font-weight: 900;
-  line-height: 0.9;
+  line-height: 1.06;
 }
 
 .destination--right .destination-title {
-  font-size: clamp(26px, 3.8vw, 44px);
+  font-size: clamp(23px, 3.2vw, 36px);
   white-space: nowrap;
 }
 
@@ -665,9 +778,9 @@ a {
 .tour-title {
   margin: 0;
   font-family: var(--display-font);
-  font-size: clamp(15px, 2vw, 30px);
+  font-size: clamp(14px, 1.6vw, 24px);
   font-weight: 900;
-  line-height: 0.88;
+  line-height: 1.06;
 }
 
 .tour-meta {
@@ -782,8 +895,8 @@ a {
     max-width: 360px;
     gap: 0.22em;
     padding: 0 18px;
-    font-size: clamp(30px, 10vw, 46px);
-    line-height: 0.94;
+    font-size: clamp(27px, 8.4vw, 40px);
+    line-height: 1.08;
   }
 
   .topbar {
@@ -830,12 +943,34 @@ a {
   .nav-links {
     gap: 8px;
     justify-content: center;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .nav-links a {
     padding: 10px 6px;
     font-size: 9px;
+  }
+
+  .route-toggle {
+    padding: 10px 6px;
+    font-size: 9px;
+  }
+
+  .route-options {
+    left: 50%;
+    min-width: 220px;
+    transform: translate(-50%, -8px);
+  }
+
+  .route-dropdown:hover .route-options,
+  .route-dropdown:focus-within .route-options,
+  .route-dropdown.is-open .route-options {
+    transform: translate(-50%, 0);
+  }
+
+  .route-options a {
+    padding: 13px 18px;
+    font-size: 12px;
   }
 
   .desktop-only {
@@ -892,11 +1027,12 @@ a {
   .destination-title {
     top: 45%;
     width: 96%;
-    font-size: clamp(24px, 7.2vw, 34px);
+    font-size: clamp(22px, 6.2vw, 30px);
+    line-height: 1.06;
   }
 
   .destination--right .destination-title {
-    font-size: clamp(21px, 6.2vw, 29px);
+    font-size: clamp(19px, 5.5vw, 25px);
     white-space: nowrap;
   }
 
@@ -1008,7 +1144,8 @@ a {
   }
 
   .tour-title {
-    font-size: clamp(48px, 16vw, 70px);
+    font-size: clamp(36px, 11vw, 52px);
+    line-height: 1.05;
   }
 
   .tour-meta {
@@ -1092,16 +1229,17 @@ a {
   }
 
   .destination-title {
-    font-size: clamp(22px, 6.8vw, 31px);
+    font-size: clamp(20px, 6vw, 28px);
   }
 
   .destination--right .destination-title {
-    font-size: clamp(19px, 5.8vw, 26px);
+    font-size: clamp(18px, 5.2vw, 24px);
     white-space: nowrap;
   }
 
   .tour-title {
-    font-size: clamp(44px, 15vw, 60px);
+    font-size: clamp(34px, 10vw, 46px);
+    line-height: 1.05;
   }
 
   .tour-media,
@@ -1228,8 +1366,8 @@ a {
 
 .tour-title {
   max-width: 440px;
-  font-size: clamp(74px, 9.8vw, 150px);
-  line-height: 0.78;
+  font-size: clamp(46px, 6.8vw, 96px);
+  line-height: 1.02;
   text-transform: uppercase;
 }
 
@@ -1384,7 +1522,8 @@ a {
 
   .tour-title {
     max-width: 320px;
-    font-size: clamp(48px, 15vw, 72px);
+    font-size: clamp(34px, 10vw, 52px);
+    line-height: 1.04;
   }
 
   .tour-copy {
@@ -1451,7 +1590,8 @@ a {
 
 .tour-title {
   max-width: 560px;
-  font-size: clamp(48px, 6.4vw, 96px);
+  font-size: clamp(36px, 4.8vw, 72px);
+  line-height: 1.05;
 }
 
 .tour-detail[data-active-tour="bu-gia-map"] .tour-title {
@@ -1534,12 +1674,12 @@ a {
 
   .tour-title {
     max-width: 92vw;
-    font-size: clamp(34px, 10vw, 52px);
-    line-height: 0.82;
+    font-size: clamp(30px, 8.5vw, 44px);
+    line-height: 1.06;
   }
 
   .tour-detail[data-active-tour="bu-gia-map"] .tour-title {
-    font-size: clamp(28px, 8vw, 42px);
+    font-size: clamp(24px, 6.8vw, 34px);
     white-space: nowrap;
   }
 
@@ -1712,4 +1852,50 @@ a {
   .chooser {
     opacity: 1;
   }
+}
+
+/* Typography spec */
+body,
+.tour-meta,
+.tour-description,
+.tour-section,
+.selection,
+.site-footer p {
+  font-family: var(--normal-font);
+  font-size: var(--body-font-size);
+  font-weight: 400;
+  line-height: var(--body-line-height);
+}
+
+.nav-links a,
+.route-toggle,
+.dropdown-menu a,
+.menu-label {
+  font-family: var(--normal-font);
+  font-size: var(--menu-font-size);
+  font-weight: 700;
+  line-height: var(--menu-line-height);
+}
+
+.tour-title,
+.destination-title,
+.intro-line {
+  font-family: var(--display-font);
+  font-size: var(--heading-font-size);
+  font-weight: 700;
+  line-height: var(--heading-line-height);
+}
+
+.brand {
+  font-family: var(--old-logo-font);
+}
+
+.intro-line {
+  font-family: var(--old-intro-font);
+  font-size: clamp(28px, 5.8vw, 74px);
+  line-height: 0.96;
+}
+
+.intro-brand-word {
+  font-family: var(--old-logo-font);
 }

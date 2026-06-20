@@ -19,10 +19,16 @@
 
       <nav class="topbar" aria-label="Điều hướng">
         <div class="nav-main">
-          <span class="brand" aria-label="NEXA">NEXA</span>
+          <a class="brand" href="index.html" aria-label="Về trang chủ">NEXA</a>
           <div class="nav-links" aria-label="Menu chính">
             <a href="#story">Chuyện của Nexa</a>
-            <a href="#routes">Cung Đường</a>
+            <div class="route-dropdown">
+              <button class="route-toggle" type="button" aria-expanded="false">Cung Đường</button>
+              <div class="route-options" aria-label="Chọn cung đường">
+                <a href="cung-duong/lang-biang/index.html">LangBiang</a>
+                <a href="cung-duong/bu-gia-map/index.html">Bù Gia Mập</a>
+              </div>
+            </div>
             <a class="desktop-only" href="#schedule">Lịch Trình</a>
           </div>
         </div>
@@ -33,7 +39,6 @@
             <span></span>
           </button>
           <div class="dropdown-menu" aria-label="Menu phụ">
-            <a href="#schedule">Lịch Trình</a>
             <a href="#contact">Liên hệ</a>
             <a href="#news">Tin Tức</a>
             <a href="#policy">Chính sách</a>
