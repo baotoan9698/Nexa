@@ -121,13 +121,20 @@ tourThumbs.forEach((thumb) => {
 
 backButton.addEventListener("click", closeTour);
 
+function getTourUrl(slug) {
+  const localSuffix = `/index.html`;
+  const deployPath = `cung-duong/${slug}`;
+
+  return window.location.protocol === "file:" ? `${deployPath}${localSuffix}` : deployPath;
+}
+
 journeyButton.addEventListener("click", () => {
   const activeTour = detail.dataset.activeTour;
 
   if (activeTour === "langbiang") {
-    window.location.href = "cung-duong/lang-biang/index.html";
+    window.location.href = getTourUrl("lang-biang");
   } else if (activeTour === "bu-gia-map") {
-    window.location.href = "cung-duong/bu-gia-map/index.html";
+    window.location.href = getTourUrl("bu-gia-map");
   }
 });
 
